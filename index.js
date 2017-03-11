@@ -22,4 +22,13 @@ bot.hear(['hello', 'hi', /hey( there)?/i], (payload, chat) => {
     });
 });
 
+bot.hear(['food', 'hungry'], (payload, chat) => {
+    // Send a text message with quick replies
+    chat.say({
+        text: 'What do you want to eat today?',
+        quickReplies: ['Mexican', 'Italian', 'American', 'Argentine']
+    });
+    console.log('The user is hungry');
+});
+
 bot.start();
