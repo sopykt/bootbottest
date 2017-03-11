@@ -54,7 +54,7 @@ bot.hear('ask me something', (payload, chat) => {
     };
 
     const sendSummary = (convo) => {
-        convo.say("Ok, here's what you told me about you: \n- Name: " + ${convo.get('name')} + "\n- Favorite Food: " + ${convo.get('food')});
+        convo.say("Ok, here's what you told me about you: \n- Name: " + {convo.get('name')} + "\n- Favorite Food: " + {convo.get('food')});
       convo.end();
     };
 });
