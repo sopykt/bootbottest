@@ -38,7 +38,7 @@ bot.hear('ask me something', (payload, chat) => {
     });
 
     const askName = (convo) => {
-        convo.ask(`What's your name?`, (payload, convo) => {
+        convo.ask("What's your name?`", (payload, convo) => {
             const text = payload.message.text;
             convo.set('name', text);
             convo.say(`Oh, your name is ${text}`).then(() => askFavoriteFood(convo));
@@ -46,7 +46,7 @@ bot.hear('ask me something', (payload, chat) => {
     };
 
     const askFavoriteFood = (convo) => {
-        convo.ask(`What's your favorite food?`, (payload, convo) => {
+        convo.ask("What's your favorite food?", (payload, convo) => {
             const text = payload.message.text;
             convo.set('food', text);
             convo.say(`Got it, your favorite food is ${text}`).then(() => sendSummary(convo));
@@ -54,9 +54,7 @@ bot.hear('ask me something', (payload, chat) => {
     };
 
     const sendSummary = (convo) => {
-        convo.say(`Ok, here's what you told me about you:
-          - Name: ${convo.get('name')}
-          - Favorite Food: ${convo.get('food')}`);
+        convo.say("Ok, here's what you told me about you: \n- Name: " + ${convo.get('name')} + "\n- Favorite Food: " + ${convo.get('food')});
       convo.end();
     };
 });
