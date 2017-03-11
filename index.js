@@ -70,6 +70,7 @@ const askGender = (convo) => {
       event: 'postback:GENDER_FEMALE',
       callback: (payload, convo) => {
         convo.say('You are a Female').then(() => askAge(convo));
+        convo.set('gender', 'Female');
       }
     },
     {
