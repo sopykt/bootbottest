@@ -31,4 +31,34 @@ bot.hear(['food', 'hungry'], (payload, chat) => {
     console.log('The user is hungry');
 });
 
+//Start a conversation and keep the user's answers in context
+bot.hear('ask me something', (payload, chat) => {
+    chat.conversation((convo) => {
+        askName(convo);
+    });
+
+    const askName = (convo) => {
+        convo.ask(`What's your name?`, (payload, convo) => {
+            const text = payload.message.text;
+            convo.set('name', text);
+            convo.say(`Oh, your name is ${text}`).then(() => askFavoriteFood(convo));
+        });
+    };
+
+    const askFavoriteFood = (convo) => {
+        convo.ask(`What's your favorite food?`, (payload, convo) => {
+            const text = payload.message.text;
+            convo.set('food', text);
+            convo.say(`Got it, your favorite food is ${text}`).then(() => sendSummary(convo));
+        });
+    };
+
+    const sendSummary = (convo) => {
+        convo.say(`Ok, here's what you told me about you:
+          - Name: ${convo.get('name')}
+          - Favorite Food: ${convo.get('food')}`);
+      convo.end();
+    };
+});
+
 bot.start();
