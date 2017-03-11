@@ -77,12 +77,14 @@ const askGender = (convo) => {
       event: 'postback:GENDER_UNKNOWN',
       callback: (payload, convo) => {
         convo.say('OK You don\'t wanna say').then(() => askAge(convo));
+		convo.set('gender', 'Unknown');
       }
     },
     {
       event: 'postback:GENDER_MALE',
       callback: (payload, convo) => {
         convo.say('You said you are a Male').then(() => askAge(convo));
+        convo.set('gender', 'Male');
       }
     },
     {
