@@ -9,7 +9,7 @@ const bot = new BootBot({
 
 bot.on('message', (payload, chat) => {
   const text = payload.message.text;
-  chat.say(`Echo: ${text}`);
+  //chat.say(`Echo: ${text}`);
   console.log(`The user said: ${text}`);
 });
 
