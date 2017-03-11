@@ -142,7 +142,7 @@ bot.hear('convo', (payload, chat) => {
         event: 'quick_reply',
         callback: (payload, convo) => {
           const text = payload.message.text;
-          convo.say(`Thanks for choosing one of the options. Your favorite color is ${text}`);
+          convo.say(`Thanks for choosing one of the options. Your favorite color is ${text}.`);
           convo.end();
         }
       }
