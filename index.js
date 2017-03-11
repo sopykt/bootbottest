@@ -167,7 +167,7 @@ bot.hear(/gif (.*)/i, (payload, chat, data) => {
 
 bot.hear('what\'s my name\?', (payload, chat) => {
   chat.getUserProfile().then((user) => {
-    chat.say(`Your name is ${user.first_name}!`);
+    chat.say(`Your name is ${user.first_name} ${user.last_name}!`);
   });
 });
 
