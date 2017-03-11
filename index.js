@@ -10,14 +10,10 @@ const bot = new BootBot({
 bot.on('message', (payload, chat) => {
   const text = payload.message.text;
   chat.say(`Echo: ${text}`);
+  console.log(`The user said: ${text}`);
 });
 
 // Subscribe to messages sent by the user with the bot.on() and bot.hear() methods:
-bot.on('message', (payload, chat) => {
-    const text = payload.message.text;
-    console.log(`The user said: ${text}`);
-});
-
 bot.hear(['hello', 'hi', /hey( there)?/i], (payload, chat) => {
     console.log('The user said "hello", "hi", "hey", or "hey there"');
 });
