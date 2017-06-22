@@ -11,7 +11,7 @@ require('dotenv').config()
 // const serveStatic = require('serve-static')
 
 
-//servestatic for assets 
+//servestatic for assets
 //app.use(serveStatic(__dirname + '/public', {
 //  maxAge: '1d',
 //  setHeaders: setCustomCacheControl
@@ -162,6 +162,21 @@ bot.hear('convo', (payload, chat) => {
 });
 
 bot.hear(/gif (.*)/i, (payload, chat, data) => {
+  const query = data.match[1];
+  chat.say('Searching for the perfect gif...');
+  fetch(GIPHY_URL + query)
+    .then(res => res.json())
+    .then(json => {
+      chat.say({
+        attachment: 'image',
+        url: json.data.image_url
+      }, {
+        typing: true
+      });
+    });
+});
+
+bot.hear(/(.*) gif/i, (payload, chat, data) => {
   const query = data.match[1];
   chat.say('Searching for the perfect gif...');
   fetch(GIPHY_URL + query)
